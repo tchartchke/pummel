@@ -43,12 +43,16 @@ class Level{
       this.peepHole();
       if (this.game.score >= this.passingScore){
         console.log("passing")
+        this.resetHoles
         clearInterval(playLvl)
+        
       } else if ( this.game.currHP === 0){
+        this.resetHoles()
         clearInterval(playLvl)
         console.log("dead")
       }
     }, 10000);
+    console.log("end of loop")
   }
 
   peepHole(){
@@ -64,5 +68,11 @@ class Level{
     return this.holes[keys[ keys.length * Math.random() << 0]];
   }
 
+  resetHoles(){
+    for (const holeName in this.holes) {
+      this.holes[holeName].drop()
+    }
+    console.log("all holes dropped")
+  }
 
 }

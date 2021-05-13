@@ -4,6 +4,7 @@ const hpBoard = document.getElementById('currHP')
 const maxHPBoard = document.getElementById('maxHP')
 
 game.start()
+// game.fetchLevel()
 //monitor game features
 
 
