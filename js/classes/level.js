@@ -47,7 +47,7 @@ class Level{
   peepLoop(){
     let hole = this.randomHole()
     if (hole.up){
-      let hole = this.randomHole()
+      hole = this.randomHole()
     }
     hole.peep()
   }

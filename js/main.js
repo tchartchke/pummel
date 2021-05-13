@@ -7,9 +7,6 @@ game.start()
 //monitor game features
 
 
-
-
-
 const holes = document.querySelectorAll('.hole');
 let timeUp = false;
 document.addEventListener('keydown', bonk);
@@ -21,10 +18,11 @@ function bonk(e) {
     // if hole is "up", set hole drop hole
     if (game.gameLevel.holes[holeNum].up){
       game.gameLevel.holes[holeNum].drop()
-      console.log(`you hit ${holeNum} that is up. UP is not set to ${game.gameLevel.holes[holeNum].up}`)
       game.updateScore(1)
+      console.log(`you hit ${holeNum} that is up. UP is now set to ${game.gameLevel.holes[holeNum].up}\nYour score is now ${game.score}`)
     } else {
-      console.log("you hit a blank spot")
+      game.updateCurrHP(-1)
+      console.log(`you hit a blank spot. Your HP is now ${game.currHP}`)
       //TODO: option - lose HP because you hit a blank?
 
     }
