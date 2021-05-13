@@ -41,7 +41,7 @@ class Game {
 
   fetchLevel(){
     //fetches/sets/returns levelObject using the current levelNum
-    return this._gameLevel = new Level(1, 20, 10000, 15000, 1, this)
+    return this._gameLevel = new Level(1, 10, 10000, 15000, 1, this)
   }
   start(){
     this.fetchLevel();

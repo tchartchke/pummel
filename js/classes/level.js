@@ -39,12 +39,19 @@ class Level{
   play(){
     // run peepLoop <# concurrency > number of times
     console.log("beginning level")
-    setInterval(() => {
-      this.peepLoop();
+    const playLvl = setInterval(() => {
+      this.peepHole();
+      if (this.game.score >= this.passingScore){
+        console.log("passing")
+        clearInterval(playLvl)
+      } else if ( this.game.currHP === 0){
+        clearInterval(playLvl)
+        console.log("dead")
+      }
     }, 10000);
   }
 
-  peepLoop(){
+  peepHole(){
     let hole = this.randomHole()
     if (hole.up){
       hole = this.randomHole()
