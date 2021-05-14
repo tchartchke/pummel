@@ -13,8 +13,11 @@ const visualize = (function() {
     showHP: function (num) {
       const hpbar = document.querySelector('.health')
       hpbar.style.width = `${num}%`
+    },
 
+    showLevelProgress: function (num) {
+      const progbar = document.querySelector('.levelprogress')
+      progbar.style.width = `${num}%`
     }
-
   }
 })()

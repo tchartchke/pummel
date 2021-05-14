@@ -26,21 +26,34 @@ class Game {
 
   // Functions
   updateScore(amount){
+    visualize.showLevelProgress(this.levelProgress())
     return this._score += amount
   }
 
-  updateMaxHP(amount){
-    return this._maxHP += amount
+  healthPercentage(){
+    return Number.parseFloat((this.currHP / this.maxHP) * 100).toFixed(2)
   }
+
+  levelProgress(){
+    return Number.parseFloat((this.score / this.gameLevel.passingScore) * 100).toFixed(2)
+  }
+
+  // TODO: useful for heart containers
+  // updateMaxHP(amount){
+  //   return this._maxHP += amount
+  // }
 
   updateCurrHP(amount){
     const newHP = this.currHP + amount
     if (newHP >= this.maxHP){
-      return this._currHP = this.maxHP
+      this._currHP = this.maxHP
     } else if (newHP <= 0 ){
-      return this._currHP = 0
+      this._currHP = 0
+    } else {
+      this._currHP = newHP
     }
-    return this._currHP = newHP
+    visualize.showHP(this.healthPercentage())
+    return this.currHP
   }
 
   fetchLevel(){
