@@ -22,22 +22,18 @@ class Hole{
   }
 
   peep(){
-    // const wait = Math.round(Math.random() * (3000 - 1000) + 1000); 
     const hold = this.randomTime();
     if (!this.up){
-      // setTimeout(()=>{
       this.lift();
       console.log(`${this.name} is up. hit it now (up: ${this.up})`)
-      // }, wait)
       setTimeout(() => {
         if (this.up){
           this.drop();
           console.log(`${this.name} is down. you missed it (up: ${this.up})`)
           this.level.game.updateCurrHP(-1) //TODO: health to be lost based on baddie in the hole
+          console.log(`HP becuase you missed the dude ${this.level.game.currHP}`)
         }
       }, hold)
-      console.log("pustide setTimeout")
-      
     }
   }
 

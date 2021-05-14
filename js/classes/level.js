@@ -6,7 +6,8 @@ class Level{
     this._speedMax = speedMax
     this._concurrency = concurrency
     this._game = game
-    this._running = false
+    // this._levelOver = false
+    this.playlvl;
 
     this._holes = {
       hole1 : new Hole("1", this),
@@ -29,30 +30,42 @@ class Level{
   get game(){ return this._game }
   get holes(){ return this._holes }
   get running(){ return this._running }
+  // get levelOver(){ return this._levelOver }
 
   //Functions
 
-  endLevel(){ 
-    return this._running = false
+  endLevel(){
+    // this._levelOver = false
+    clearInterval(this.playLvl)
+    return [this.game.score, this.game.currHP]
   }
-
   play(){
+    let endLevelState = []
     // run peepLoop <# concurrency > number of times
     console.log("beginning level")
-    const playLvl = setInterval(() => {
+    this.playLvl = setInterval(() => {
       this.peepHole();
       if (this.game.score >= this.passingScore){
-        console.log("passing")
-        this.resetHoles
-        clearInterval(playLvl)
+        console.log("End of Level, you win!")
         
+        if (endLevelState === []){
+          endLevelState = this.endLevel()
+        } else { this.endLevel()}
+        this.resetHoles
+        //TODO: mark level complete and move to next level
+        //if next level available then play that level
+        //else say congrats your the weeeeener and prompt saving
       } else if ( this.game.currHP === 0){
+        console.log("HP is 0. You DED")
+
+        if (endLevelState === []){
+          endLevelState = this.endLevel()
+        } else { this.endLevel()}
         this.resetHoles()
-        clearInterval(playLvl)
-        console.log("dead")
+        //TODO: say nice try and prompt saving
       }
-    }, 10000);
-    console.log("end of loop")
+      console.log(`currHP in loop: ${this.game.currHP}`)
+    }, this.speedMax); 
   }
 
   peepHole(){

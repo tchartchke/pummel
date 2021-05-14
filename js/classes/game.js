@@ -20,6 +20,10 @@ class Game {
   get maxLevel(){ return this._maxLevel }
   get gameLevel(){ return this._gameLevel }
 
+  set score(score){ return this._score = score }
+  set currHP(currHP){ return this._currHP = currHP }
+
+
   // Functions
   updateScore(amount){
     return this._score += amount
@@ -41,7 +45,7 @@ class Game {
 
   fetchLevel(){
     //fetches/sets/returns levelObject using the current levelNum
-    return this._gameLevel = new Level(1, 10, 10000, 15000, 1, this)
+    return this._gameLevel = new Level(1, 10, 1000, 3000, 1, this)
   }
   start(){
     this.fetchLevel();
