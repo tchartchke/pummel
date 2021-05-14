@@ -4,17 +4,25 @@ const hpBoard = document.getElementById('currHP')
 const maxHPBoard = document.getElementById('maxHP')
 
 //event listener, load all dom
-// game.start()
+game.start()
 // game.fetchLevel()
 //monitor game features
 
 
-const holes = document.querySelectorAll('.hole');
-let timeUp = false;
+// const holes = document.querySelectorAll('.hole');
+// let timeUp = false;
 document.addEventListener('keydown', (e) => {
-  bonk(e)
-  visualizeBonk(e)
+  const num = e.key
+  if (parseInt(num)){
+    const holeNum = `hole${num}`
+    const selectedHole = document.querySelector(`.${holeNum}`)
+    selectedHole.classList.add('hit')
+    bonk(holeNum)
+  } else {
+    //pause logic?
+  }
 });
+
 document.addEventListener('keyup', (e) => {
   const num = e.key
   if (parseInt(num)){
@@ -24,10 +32,7 @@ document.addEventListener('keyup', (e) => {
   }
 });
 
-function bonk(e) {
-  const num = e.key
-  if (parseInt(num)){
-    const holeNum = `hole${num}`
+function bonk(holeNum) {
     // if hole is "up", set hole drop hole
     if (game.gameLevel.holes[holeNum].up){
       game.gameLevel.holes[holeNum].drop()
@@ -39,63 +44,5 @@ function bonk(e) {
       //TODO: option - lose HP because you hit a blank?
 
     }
-  } else {
-    // pause action 
-  }
-}
-
-function visualizeBonk(e){
-  //flash border color, unflash on keyup
-  const num = e.key
-  if (parseInt(num)){
-    const holeNum = `hole${num}`
-    const selectedHole = document.querySelector(`.${holeNum}`)
-    selectedHole.classList.add('hit')
-  }
-}
-
-// function bonk(e) {
-//   const num = e.code.slice(-1)
-//   if (parseInt(num))
-//   {
-//     holeNum = `hole${num}`
-//     const tgt = document.querySelector(`.${holeNum}`)
-//     if (tgt.classList.contains("up")){
-//       game.updateScore(1)
-//       scoreBoard.innerHTML = game.score
-//       tgt.classList.remove('up');
-//     } else{
-//       game.updateCurrHP(-1)
-//       hpBoard.innerHTML = game.currHP
-//     }
-    
-//   }
   
-// }
-
-// function randomTime(min, max) {
-//   return Math.round(Math.random() * (max - min) + min);
-// }
-
-// function randomHole(holes) {
-//   const idx = Math.floor(Math.random() * holes.length);
-//   const hole = holes[idx];
-//   return hole;
-// }
-
-// function peep() {
-//   const time = randomTime(400, 4000);
-//   const hole = randomHole(holes);
-//   hole.classList.add('up');
-//   setTimeout(() => {
-//     hole.classList.remove('up');
-//     if (!timeUp) peep();
-//   }, time);
-// }
-
-//start the game
-//init everything at zero
-//load level 1 game states
-//  <bonus>list of types of monster available for the level
-//  time range to be inserted to "random" monster stays up
-//
+}
