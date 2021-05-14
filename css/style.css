@@ -61,7 +61,6 @@ body {
 .wrapper {
   display: grid;
   grid-template-columns: 5fr 9fr;
-  /* border: 1px black solid ; */
 }
 
 .gamearea {
@@ -92,5 +91,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.hit {
+  border-radius: 0.5em;
+  border: 1px solid black;
 }

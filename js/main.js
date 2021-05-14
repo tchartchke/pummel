@@ -3,17 +3,29 @@ const scoreBoard = document.getElementById('gameScore')
 const hpBoard = document.getElementById('currHP')
 const maxHPBoard = document.getElementById('maxHP')
 
-game.start()
+//event listener, load all dom
+// game.start()
 // game.fetchLevel()
 //monitor game features
 
 
 const holes = document.querySelectorAll('.hole');
 let timeUp = false;
-document.addEventListener('keydown', bonk);
+document.addEventListener('keydown', (e) => {
+  bonk(e)
+  visualizeBonk(e)
+});
+document.addEventListener('keyup', (e) => {
+  const num = e.key
+  if (parseInt(num)){
+    const holeNum = `hole${num}`
+    const selectedHole = document.querySelector(`.${holeNum}`)
+    selectedHole.classList.remove('hit')
+  }
+});
 
 function bonk(e) {
-  const num = e.code.slice(-1)
+  const num = e.key
   if (parseInt(num)){
     const holeNum = `hole${num}`
     // if hole is "up", set hole drop hole
@@ -32,6 +44,15 @@ function bonk(e) {
   }
 }
 
+function visualizeBonk(e){
+  //flash border color, unflash on keyup
+  const num = e.key
+  if (parseInt(num)){
+    const holeNum = `hole${num}`
+    const selectedHole = document.querySelector(`.${holeNum}`)
+    selectedHole.classList.add('hit')
+  }
+}
 
 // function bonk(e) {
 //   const num = e.code.slice(-1)
