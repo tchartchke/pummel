@@ -1,17 +1,19 @@
 class Game {
   constructor() {
     this._score = 0
+    this._startLvlScore = 0
     this._date = new Date()
     this._maxHP = 10
     this._currHP = 10
     this._levelNum = 1
     this._gameOver = false
-    this._maxLevel = 1 //TODO: will change based off levels created. Should be set based off API call
+    this._maxLevel = 10 //TODO: will change based off levels created. Should be set based off API call
 
   }
 
   // Getters
   get score(){ return this._score }
+  get startLvlScore(){ return this._startLvlScore }
   get date(){ return this._date }
   get levelNum(){ return this._levelNum }
   get maxHP(){ return this._maxHP }
@@ -41,7 +43,7 @@ class Game {
   }
 
   levelProgress(){
-    return Number.parseFloat((this.score / this.gameLevel.passingScore) * 100).toFixed(2)
+    return Number.parseFloat(((this.score - this.startLvlScore) / (this.gameLevel.passingScore - this.startLvlScore)) * 100).toFixed(2)
   }
 
   // TODO: useful for heart containers
@@ -64,12 +66,15 @@ class Game {
 
   fetchLevel(){
     //fetches/sets/returns levelObject using the current levelNum
-    return this._gameLevel = new Level(this.levelNum, 5, 1000, 2000, 1, this)
+    return this._gameLevel = new Level(this.levelNum, this._startLvlScore+10 + this.levelNum , 1000, 2000, 1, this)
   }
   
   nextLevel(){
+    this._startLvlScore = this.gameLevel.passingScore
     this._levelNum += 1
     visualize.showLevel(this.levelNum)
+    this.fetchLevel()
+    this.gameLevel.play();
   }
 
   start(){
