@@ -7,6 +7,7 @@ class Game {
     this._currHP = 10
     this._levelNum = 1
     this._gameOver = false
+    this.adapter = new LevelsAdapter()
     this._maxLevel = 10 //TODO: will change based off levels created. Should be set based off API call
 
   }
@@ -65,8 +66,12 @@ class Game {
   }
 
   fetchLevel(){
-    //fetches/sets/returns levelObject using the current levelNum
-    return this._gameLevel = new Level(this.levelNum, this._startLvlScore+10 + this.levelNum , 1000, 2000, 1, this)
+    this.adapter.getLevel(this.levelNum).then(level => {
+      this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["concurrency"], this)
+      console.log(this._gameLevel)
+      return this._gameLevel.play()
+    })
+    // return this._gameLevel = new Level(this.levelNum, this._startLvlScore+10 + this.levelNum , 1000, 2000, 1, this)
   }
   
   nextLevel(){
@@ -74,13 +79,13 @@ class Game {
     this._levelNum += 1
     visualize.showLevel(this.levelNum)
     this.fetchLevel()
-    this.gameLevel.play();
+    // this.gameLevel.play();
   }
 
   start(){
-    this.fetchLevel();
+    this.fetchLevel()
     visualize.showLevel(this.levelNum)
-    this.gameLevel.play();
+    // this.gameLevel.play();
     
 
   }

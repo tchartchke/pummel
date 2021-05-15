@@ -43,7 +43,6 @@ class Level{
         this.resetHoles
         clearInterval(this.playLvl)
         document.querySelector(".footer").innerHTML = `score: ${this.game.score}`
-        console.log( "I won") //start next level
         return this.game.nextLevel()
 
         //
