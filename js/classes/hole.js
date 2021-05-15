@@ -24,7 +24,6 @@ class Hole{
   }
 
   peep(){
-    const hold = this.randomTime();
     if (!this.up){
       this.lift();
       setTimeout(() => {
@@ -32,7 +31,7 @@ class Hole{
           this.drop();
           this.level.game.updateCurrHP(-1) //TODO: health to be lost based on baddie in the hole
         }
-      }, hold)
+      }, this.randomTime())
     }
   }
 
