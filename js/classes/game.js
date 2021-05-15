@@ -13,7 +13,7 @@ class Game {
   // Getters
   get score(){ return this._score }
   get date(){ return this._date }
-  get levelNum(){ return this._level }
+  get levelNum(){ return this._levelNum }
   get maxHP(){ return this._maxHP }
   get currHP(){ return this._currHP }
   get gameOver(){ return this._gameOver }
@@ -64,22 +64,19 @@ class Game {
 
   fetchLevel(){
     //fetches/sets/returns levelObject using the current levelNum
-    return this._gameLevel = new Level(1, 10, 1000, 3000, 1, this)
+    return this._gameLevel = new Level(this.levelNum, 5, 1000, 2000, 1, this)
   }
+  
+  nextLevel(){
+    this._levelNum += 1
+    visualize.showLevel(this.levelNum)
+  }
+
   start(){
     this.fetchLevel();
-    visualize.showLevel(this.gameLevel.level)
+    visualize.showLevel(this.levelNum)
     this.gameLevel.play();
-
-
-    // console.log("in start")
-
-    //init level based off this.level => fetch/:port/level/levelNum (lvl, passingScore, speedMin, speedMax, concurrency - eventually a list of types of baddies available)
-    //const lvlFeatures = fetchLevel(this.levelNum)
-    //set speed and baddies for holes
-    //run all holes until end conditions met
-
-
+    
 
   }
 

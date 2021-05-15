@@ -6,6 +6,7 @@ class Level{
     this._speedMax = speedMax
     this._concurrency = concurrency
     this._game = game
+    this.active = true
     // this._levelOver = false
     this.playlvl;
 
@@ -34,31 +35,30 @@ class Level{
 
   //Functions
 
-  endLevel(){
-    // this._levelOver = false
-    clearInterval(this.playLvl)
-    return [this.game.score, this.game.currHP]
-  }
   play(){
-    const wait = Math.round(Math.random() * (5000 - 0));
-    let endLevelState = []
     this.playLvl = setInterval(() => {
-      this.peepHole();
       if (this.game.score >= this.passingScore){
         console.log("End of Level, you win!")
-        endLevelState === [] ? endLevelState = this.endLevel() : this.endLevel()
+        this.active = false
         this.resetHoles
-        //TODO: mark level complete and move to next level
-        //if next level available then play that level
-        //else say congrats your the weeeeener and prompt saving
-        
+        clearInterval(this.playLvl)
+        document.querySelector(".footer").innerHTML = `score: ${this.game.score}`
+        console.log( "I won") //start next level
+        return this.game.nextLevel()
+
+        //
       } else if ( this.game.currHP === 0 ){
-        console.log("HP is 0. You DED")
-        endLevelState === [] ? endLevelState = this.endLevel() : this.endLevel()
+        this.active = false
         this.resetHoles()
-        //TODO: say nice try and prompt saving
+        clearInterval(this.playLvl)
+        document.querySelector(".footer").innerHTML = `Game Over. Score: ${this.game.score} //prompt save`
+        return console.log( "I lost") //TODO: say nice try and prompt saving
+
+        //
       }
-    }, wait); 
+      this.peepHole();
+    }, Math.round(Math.random() * (5000 - 500) + 500)); 
+    //TODO: should I clear holes space before doing next level?
   }
 
   peepHole(){
@@ -78,7 +78,6 @@ class Level{
     for (const holeName in this.holes) {
       this.holes[holeName].drop()
     }
-    console.log("all holes dropped")
   }
 
 }

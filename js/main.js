@@ -33,14 +33,13 @@ document.addEventListener('keyup', (e) => {
 });
 
 function bonk(holeNum) {
-    // if hole is "up", set hole drop hole
-    if (game.gameLevel.holes[holeNum].up){
-      game.gameLevel.holes[holeNum].drop()
-      game.updateScore(1)
-    } else {
-      game.updateCurrHP(-1)
-      //TODO: option - lose HP because you hit a blank?
-
+    // TODO: will only affect anything if level is still in progress
+    if (game.gameLevel.active){
+      if (game.gameLevel.holes[holeNum].up){
+        game.gameLevel.holes[holeNum].drop()
+        game.updateScore(1) //update based off baddie in hole
+      } else {
+        game.updateCurrHP(-1)
+      }
     }
-  
 }
