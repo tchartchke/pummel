@@ -18,6 +18,11 @@ const visualize = (function() {
     showLevelProgress: function (num) {
       const progbar = document.querySelector('.levelprogress')
       progbar.style.width = `${num}%`
+    },
+
+    showLevel: function (num) {
+      const lvl = document.querySelector('.lvlindicator')
+      lvl.innerHTML = `Level ${num}`
     }
   }
 })()

@@ -40,32 +40,25 @@ class Level{
     return [this.game.score, this.game.currHP]
   }
   play(){
+    const wait = Math.round(Math.random() * (5000 - 0));
     let endLevelState = []
-    // run peepLoop <# concurrency > number of times
-    console.log("beginning level")
     this.playLvl = setInterval(() => {
       this.peepHole();
       if (this.game.score >= this.passingScore){
         console.log("End of Level, you win!")
-        
-        if (endLevelState === []){
-          endLevelState = this.endLevel()
-        } else { this.endLevel()}
+        endLevelState === [] ? endLevelState = this.endLevel() : this.endLevel()
         this.resetHoles
         //TODO: mark level complete and move to next level
         //if next level available then play that level
         //else say congrats your the weeeeener and prompt saving
-      } else if ( this.game.currHP === 0){
+        
+      } else if ( this.game.currHP === 0 ){
         console.log("HP is 0. You DED")
-
-        if (endLevelState === []){
-          endLevelState = this.endLevel()
-        } else { this.endLevel()}
+        endLevelState === [] ? endLevelState = this.endLevel() : this.endLevel()
         this.resetHoles()
         //TODO: say nice try and prompt saving
       }
-      console.log(`currHP in loop: ${this.game.currHP}`)
-    }, this.speedMax); 
+    }, wait); 
   }
 
   peepHole(){

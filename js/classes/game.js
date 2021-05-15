@@ -26,8 +26,14 @@ class Game {
 
   // Functions
   updateScore(amount){
+    const newScore = this.score + amount
+    if (newScore >= this.gameLevel.passingScore){
+      this.score = this.gameLevel.passingScore
+    } else {
+      this.score = newScore
+    }
     visualize.showLevelProgress(this.levelProgress())
-    return this._score += amount
+    return this.score
   }
 
   healthPercentage(){
@@ -62,8 +68,11 @@ class Game {
   }
   start(){
     this.fetchLevel();
+    visualize.showLevel(this.gameLevel.level)
     this.gameLevel.play();
 
+
+    // console.log("in start")
 
     //init level based off this.level => fetch/:port/level/levelNum (lvl, passingScore, speedMin, speedMax, concurrency - eventually a list of types of baddies available)
     //const lvlFeatures = fetchLevel(this.levelNum)

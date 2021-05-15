@@ -11,9 +11,11 @@ class Hole{
   get level(){ return this._level}
 
   lift(){
+    visualize.lift(this.name)
     return this._up = true
   }
   drop(){
+    visualize.drop(this.name)
     return this._up = false
   }
 
@@ -25,13 +27,10 @@ class Hole{
     const hold = this.randomTime();
     if (!this.up){
       this.lift();
-      console.log(`${this.name} is up. hit it now (up: ${this.up})`)
       setTimeout(() => {
         if (this.up){
           this.drop();
-          console.log(`${this.name} is down. you missed it (up: ${this.up})`)
           this.level.game.updateCurrHP(-1) //TODO: health to be lost based on baddie in the hole
-          console.log(`HP becuase you missed the dude ${this.level.game.currHP}`)
         }
       }, hold)
     }

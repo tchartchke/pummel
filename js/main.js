@@ -37,10 +37,8 @@ function bonk(holeNum) {
     if (game.gameLevel.holes[holeNum].up){
       game.gameLevel.holes[holeNum].drop()
       game.updateScore(1)
-      console.log(`you hit ${holeNum} that is up. UP is now set to ${game.gameLevel.holes[holeNum].up}\nYour score is now ${game.score}`)
     } else {
       game.updateCurrHP(-1)
-      console.log(`you hit a blank spot. Your HP is now ${game.currHP}`)
       //TODO: option - lose HP because you hit a blank?
 
     }
