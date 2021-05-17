@@ -101,9 +101,13 @@ class Game {
       modal.style.display = "none";
     }
     
-    //save player to database
-    //list previous players sorted by highscore
-    //restart button at bottom
+    //TODO: do I need this? could just force them to X or submit
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
   }
 
 }

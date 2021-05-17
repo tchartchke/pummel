@@ -3,8 +3,25 @@ const scoreBoard = document.getElementById('gameScore')
 const hpBoard = document.getElementById('currHP')
 const maxHPBoard = document.getElementById('maxHP')
 const highScores = document.getElementById('highscores')
+const modal = document.querySelector('.modal-body')
 const players = new PlayersAdapter
 
+document.querySelector('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log("clicked")
+  //get score and date and player name input and post to api
+  //THEN reprint fetchHighScores()
+  //removes form and changes to submitted message. asks if wants to replay?
+  modal.innerHTML = ""
+  const playAgain = document.createElement('button')
+  playAgain.className = "play-again"
+  playAgain.innerHTML = "Play Again?"
+  modal.appendChild(playAgain)
+  playAgain.addEventListener('click', () => {
+    location.reload();
+  })
+
+})
 
 //event listener, load all dom
 // game.start()
@@ -57,4 +74,6 @@ function fetchHighScores(){
     }
   })
 }
+
+
 

@@ -16,15 +16,15 @@
           <h2>reason for end of game here (Congrats or Game over)</h2>
         </div>
         <div class="modal-body">
-          <p>Your Score</p>
-          <p>A form for your name where you can input your doodads</p>
+          <form id="save-player">
+            <input class="player-name-input" type="text" />
+            <input type="submit" />
+          </form>
         </div>
         <div class="modal-footer">
-          <h3>List of high scores - fetches from api to get players ordered by score (only top few)
+          <h3>High Scores</h3>
             <ul id="highscores">
             </ul>
-
-          </h3>
         </div>
       </div>
     
