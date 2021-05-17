@@ -7,7 +7,6 @@ class Level{
     this._concurrency = concurrency
     this._game = game
     this.active = true
-    // this._levelOver = false
     this.playlvl;
 
     this._holes = {
@@ -31,7 +30,6 @@ class Level{
   get game(){ return this._game }
   get holes(){ return this._holes }
   get running(){ return this._running }
-  // get levelOver(){ return this._levelOver }
 
   //Functions
 
@@ -51,12 +49,13 @@ class Level{
         this.resetHoles()
         clearInterval(this.playLvl)
         document.querySelector(".footer").innerHTML = `Game Over. Score: ${this.game.score} //prompt save`
+        this.game.endGame()
         return console.log( "I lost") //TODO: say nice try and prompt saving
 
         //
       }
       this.peepHole();
-    }, Math.round(Math.random() * (5000 - 500) + 500)); 
+    }, Math.round(Math.random() * (2000 - 1000) + 1000)); 
     //TODO: should I clear holes space before doing next level?
   }
 

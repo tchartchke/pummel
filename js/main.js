@@ -2,12 +2,14 @@ const game = new Game
 const scoreBoard = document.getElementById('gameScore')
 const hpBoard = document.getElementById('currHP')
 const maxHPBoard = document.getElementById('maxHP')
+const highScores = document.getElementById('highscores')
+const players = new PlayersAdapter
+
 
 //event listener, load all dom
-game.start()
+// game.start()
 // game.fetchLevel()
 //monitor game features
-
 
 // const holes = document.querySelectorAll('.hole');
 // let timeUp = false;
@@ -43,3 +45,16 @@ function bonk(holeNum) {
       }
     }
 }
+
+function fetchHighScores(){
+  highScores.innerHTML = ""
+  players.getPlayers().then(players => {
+    console.log(typeof players)
+    for (const player of players){
+      const li = document.createElement('li')
+      li.innerHTML = `${player["name"]} - ${player["score"]}`
+      highScores.appendChild(li)
+    }
+  })
+}
+

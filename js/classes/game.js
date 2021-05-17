@@ -8,8 +8,6 @@ class Game {
     this._levelNum = 1
     this._gameOver = false
     this.adapter = new LevelsAdapter()
-    this._maxLevel = 10 //TODO: will change based off levels created. Should be set based off API call
-
   }
 
   // Getters
@@ -68,8 +66,10 @@ class Game {
   fetchLevel(){
     this.adapter.getLevel(this.levelNum).then(level => {
       this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["concurrency"], this)
-      console.log(this._gameLevel)
-      return this._gameLevel.play()
+      return this.gameLevel.play()
+    }).catch(() =>  {
+      //max level. you've won the game!
+      return this.endGame()
     })
     // return this._gameLevel = new Level(this.levelNum, this._startLvlScore+10 + this.levelNum , 1000, 2000, 1, this)
   }
@@ -87,18 +87,20 @@ class Game {
     visualize.showLevel(this.levelNum)
     // this.gameLevel.play();
     
-
-  }
-
-  isGameOver(){
-    //lose condition || win condition
-    return this.currHP === 0 || this.level > this.maxLevel
   }
 
   endGame(){
     //create popup to enter username
-    let newName = document.getElementById('name-entry').value
-    const player = new User(newName, this.score, this.date)
+    // let newName = document.getElementById('name-entry').value
+    // const player = new User(newName, this.score, this.date)
+    console.log("the game has ended!")
+    const modal = document.getElementById('gameEndModal');
+    const span = document.getElementsByClassName('close')[0];
+    modal.style.display = "block";
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
     //save player to database
     //list previous players sorted by highscore
     //restart button at bottom

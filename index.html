@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="css\style.css">
   </head>
   <body>
+    <div id="gameEndModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>reason for end of game here (Congrats or Game over)</h2>
+        </div>
+        <div class="modal-body">
+          <p>Your Score</p>
+          <p>A form for your name where you can input your doodads</p>
+        </div>
+        <div class="modal-footer">
+          <h3>List of high scores - fetches from api to get players ordered by score (only top few)
+            <ul id="highscores">
+            </ul>
+
+          </h3>
+        </div>
+      </div>
+    
+    </div>
+
     <div class="wrapper">
       <div class="title">Pummel</div>
       <div class="main">
@@ -43,6 +66,7 @@
 
   </script>
   <script src="js\adapters\levelsAdapter.js" charset="utf-8"></script>
+  <script src="js\adapters\playersAdapter.js" charset="utf-8"></script>
   <script src="js\visualize.js" charset="utf-8"></script>
   <script src="js\classes\user.js" charset="utf-8"></script>
   <script src="js\classes\game.js" charset="utf-8"></script>
