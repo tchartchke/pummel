@@ -5,13 +5,19 @@ const maxHPBoard = document.getElementById('maxHP')
 const highScores = document.getElementById('highscores')
 const modal = document.querySelector('.modal-body')
 const players = new PlayersAdapter
+const input = document.querySelector('.player-name-input')
+
+
 
 document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log("clicked")
   //get score and date and player name input and post to api
   //THEN reprint fetchHighScores()
-  //removes form and changes to submitted message. asks if wants to replay?
+  
+  const playerName = input.value
+  console.log(playerName)
+  players.saveGame(playerName, game.score, game.date)
+
   modal.innerHTML = ""
   const playAgain = document.createElement('button')
   playAgain.className = "play-again"
@@ -20,11 +26,11 @@ document.querySelector('form').addEventListener('submit', (e) => {
   playAgain.addEventListener('click', () => {
     location.reload();
   })
-
 })
 
 //event listener, load all dom
-// game.start()
+fetchHighScores()
+game.start()
 // game.fetchLevel()
 //monitor game features
 
@@ -66,10 +72,9 @@ function bonk(holeNum) {
 function fetchHighScores(){
   highScores.innerHTML = ""
   players.getPlayers().then(players => {
-    console.log(typeof players)
     for (const player of players){
       const li = document.createElement('li')
-      li.innerHTML = `${player["name"]} - ${player["score"]}`
+      li.innerHTML = `${player["name"]} - ${player["score"]} - ${player["play_date"]}`
       highScores.appendChild(li)
     }
   })

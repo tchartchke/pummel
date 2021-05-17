@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this._score = 0
     this._startLvlScore = 0
-    this._date = new Date()
+    this._date = new Date().toLocaleDateString('fr-CA')
     this._maxHP = 10
     this._currHP = 10
     this._levelNum = 1
@@ -100,7 +100,7 @@ class Game {
     span.onclick = function() {
       modal.style.display = "none";
     }
-    
+
     //TODO: do I need this? could just force them to X or submit
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
