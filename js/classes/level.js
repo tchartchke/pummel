@@ -9,6 +9,13 @@ class Level{
     this.active = true
     this.playlvl;
 
+    this._points = 0
+
+    this.levelIndicator = document.querySelector('.lvlindicator')
+    this.levelIndicator.innerHTML = `Level ${lvl}`
+    this.levelProgressBar = document.querySelector('.levelprogress')
+    this.levelProgressBar.style.width = `0%`
+
     this._holes = {
       hole1 : new Hole("1", this),
       hole2 : new Hole("2", this),
@@ -23,6 +30,7 @@ class Level{
   };
 
   get level(){ return this._lvl }
+  get points(){ return this._points }
   get passingScore(){ return this._passingScore }
   get speedMin(){ return this._speedMin }
   get speedMax(){ return this._speedMax }
@@ -31,7 +39,15 @@ class Level{
   get holes(){ return this._holes }
   get running(){ return this._running }
 
+  set points(amt){
+    return this._points = amt
+  }
+
   //Functions
+
+  levelProgress(){
+    return Number.parseFloat( this.points / this.passingScore * 100).toFixed(2)
+  }
 
   play(){
     this.playLvl = setInterval(() => {
@@ -57,6 +73,13 @@ class Level{
       this.peepHole();
     }, Math.round(Math.random() * (2000 - 1000) + 1000)); 
     //TODO: should I clear holes space before doing next level?
+  }
+
+  addPoints(amt){
+    this.points += amt
+    this.game.updateScore(amt)
+    this.levelProgressBar.style.width = `${this.levelProgress()}%`
+    return this.points
   }
 
   peepHole(){

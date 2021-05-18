@@ -1,18 +1,20 @@
 class Game {
   constructor() {
     this._score = 0
-    this._startLvlScore = 0
+    this._LvlScore = 0
     this._date = new Date().toLocaleDateString('fr-CA')
     this._maxHP = 10
     this._currHP = 10
     this._levelNum = 1
     this._gameOver = false
     this.adapter = new LevelsAdapter()
+
+    // this.bindEventListeners()
   }
 
   // Getters
   get score(){ return this._score }
-  get startLvlScore(){ return this._startLvlScore }
+  get LvlScore(){ return this._LvlScore }
   get date(){ return this._date }
   get levelNum(){ return this._levelNum }
   get maxHP(){ return this._maxHP }
@@ -24,6 +26,9 @@ class Game {
   set score(score){ return this._score = score }
   set currHP(currHP){ return this._currHP = currHP }
 
+  // bindEventListeners(){
+
+  // }
 
   // Functions
   updateScore(amount){
@@ -33,7 +38,7 @@ class Game {
     } else {
       this.score = newScore
     }
-    visualize.showLevelProgress(this.levelProgress())
+    // visualize.showLevelProgress(this.levelProgress())
     return this.score
   }
 
@@ -42,7 +47,7 @@ class Game {
   }
 
   levelProgress(){
-    return Number.parseFloat(((this.score - this.startLvlScore) / (this.gameLevel.passingScore - this.startLvlScore)) * 100).toFixed(2)
+    return Number.parseFloat(((this.score - this.LvlScore) / (this.gameLevel.passingScore - this.LvlScore)) * 100).toFixed(2)
   }
 
   // TODO: useful for heart containers
@@ -66,6 +71,8 @@ class Game {
   fetchLevel(){
     this.adapter.getLevel(this.levelNum).then(level => {
       this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["concurrency"], this)
+
+      console.log(this._gameLevel)
       return this.gameLevel.play()
     }).catch(() =>  {
       //max level. you've won the game!
@@ -77,22 +84,17 @@ class Game {
   nextLevel(){
     this._startLvlScore = this.gameLevel.passingScore
     this._levelNum += 1
-    visualize.showLevel(this.levelNum)
     this.fetchLevel()
     // this.gameLevel.play();
   }
 
   start(){
     this.fetchLevel()
-    visualize.showLevel(this.levelNum)
     // this.gameLevel.play();
     
   }
 
   endGame(){
-    //create popup to enter username
-    // let newName = document.getElementById('name-entry').value
-    // const player = new User(newName, this.score, this.date)
     console.log("the game has ended!")
     const modal = document.getElementById('gameEndModal');
     const span = document.getElementsByClassName('close')[0];
@@ -101,13 +103,6 @@ class Game {
       modal.style.display = "none";
     }
 
-    //TODO: do I need this? could just force them to X or submit
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
   }
 
 }

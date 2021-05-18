@@ -7,8 +7,8 @@ const modal = document.querySelector('.modal-body')
 const players = new PlayersAdapter
 const input = document.querySelector('.player-name-input')
 
-
-
+fetchHighScores()
+game.start()
 document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
   //get score and date and player name input and post to api
@@ -16,7 +16,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
   
   const playerName = input.value
   console.log(playerName)
-  players.saveGame(playerName, game.score, game.date)
+  players.saveGame(playerName, game.score, game.date) //todo: rerender high score list
 
   modal.innerHTML = ""
   const playAgain = document.createElement('button')
@@ -29,8 +29,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
 })
 
 //event listener, load all dom
-fetchHighScores()
-game.start()
+
 // game.fetchLevel()
 //monitor game features
 
@@ -62,7 +61,8 @@ function bonk(holeNum) {
     if (game.gameLevel.active){
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
-        game.updateScore(1) //update based off baddie in hole
+        game.gameLevel.addPoints(1) //update based off baddie in hole
+        console.log(game.gameLevel.points)
       } else {
         game.updateCurrHP(-1)
       }
@@ -70,7 +70,6 @@ function bonk(holeNum) {
 }
 
 function fetchHighScores(){
-  highScores.innerHTML = ""
   players.getPlayers().then(players => {
     for (const player of players){
       const li = document.createElement('li')
