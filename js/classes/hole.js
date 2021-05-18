@@ -3,7 +3,7 @@ class Hole{
     this._name = `hole${num}`
     this._up = false
     this._level = levelObject
-
+    this.hole = document.querySelector(`.hole${num}`)
   }
 
   get name(){ return this._name }
@@ -11,11 +11,11 @@ class Hole{
   get level(){ return this._level}
 
   lift(){
-    visualize.lift(this.name)
+    this.hole.classList.add('up')
     return this._up = true
   }
   drop(){
-    visualize.drop(this.name)
+    this.hole.classList.remove('up')
     return this._up = false
   }
 
