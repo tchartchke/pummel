@@ -9,7 +9,7 @@ class Game {
     this._gameOver = false
     this.adapter = new LevelsAdapter()
 
-    // this.bindEventListeners()
+    this.hpbar = document.querySelector('.health')
   }
 
   // Getters
@@ -38,22 +38,12 @@ class Game {
     } else {
       this.score = newScore
     }
-    // visualize.showLevelProgress(this.levelProgress())
     return this.score
   }
 
   healthPercentage(){
     return Number.parseFloat((this.currHP / this.maxHP) * 100).toFixed(2)
   }
-
-  levelProgress(){
-    return Number.parseFloat(((this.score - this.LvlScore) / (this.gameLevel.passingScore - this.LvlScore)) * 100).toFixed(2)
-  }
-
-  // TODO: useful for heart containers
-  // updateMaxHP(amount){
-  //   return this._maxHP += amount
-  // }
 
   updateCurrHP(amount){
     const newHP = this.currHP + amount
@@ -64,25 +54,22 @@ class Game {
     } else {
       this._currHP = newHP
     }
-    visualize.showHP(this.healthPercentage())
+    this.hpbar.style.width = `${this.healthPercentage()}%`
     return this.currHP
   }
 
   fetchLevel(){
     this.adapter.getLevel(this.levelNum).then(level => {
       this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["concurrency"], this)
-
-      console.log(this._gameLevel)
       return this.gameLevel.play()
     }).catch(() =>  {
       //max level. you've won the game!
       return this.endGame()
     })
-    // return this._gameLevel = new Level(this.levelNum, this._startLvlScore+10 + this.levelNum , 1000, 2000, 1, this)
+    
   }
   
   nextLevel(){
-    this._startLvlScore = this.gameLevel.passingScore
     this._levelNum += 1
     this.fetchLevel()
     // this.gameLevel.play();
