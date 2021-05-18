@@ -26,10 +26,6 @@ class Game {
   set score(score){ return this._score = score }
   set currHP(currHP){ return this._currHP = currHP }
 
-  // bindEventListeners(){
-
-  // }
-
   // Functions
   updateScore(amount){
     const newScore = this.score + amount
@@ -81,8 +77,9 @@ class Game {
     
   }
 
-  endGame(){
+  endGame(msg="win"){
     console.log("the game has ended!")
+    console.log(msg)
     const modal = document.getElementById('gameEndModal');
     const span = document.getElementsByClassName('close')[0];
     modal.style.display = "block";

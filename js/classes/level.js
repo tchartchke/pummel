@@ -49,30 +49,25 @@ class Level{
     return Number.parseFloat( this.points / this.passingScore * 100).toFixed(2)
   }
 
+  isLevelOver(){
+    return this.points >= this.passingScore || this.game.currHP === 0
+  }
+
   play(){
     this.playLvl = setInterval(() => {
-      if (this.game.score >= this.passingScore){
-        console.log("End of Level, you win!")
+      if (this.isLevelOver()){
         this.active = false
         this.resetHoles
         clearInterval(this.playLvl)
-        document.querySelector(".footer").innerHTML = `score: ${this.game.score}`
-        return this.game.nextLevel()
+        if (this.game.score >= this.passingScore){
+          return this.game.nextLevel()
+        } else if ( this.game.currHP === 0 ){
+          return this.game.endGame("lose") //TODO: say nice try and prompt saving
 
-        //
-      } else if ( this.game.currHP === 0 ){
-        this.active = false
-        this.resetHoles()
-        clearInterval(this.playLvl)
-        document.querySelector(".footer").innerHTML = `Game Over. Score: ${this.game.score} //prompt save`
-        this.game.endGame()
-        return console.log( "I lost") //TODO: say nice try and prompt saving
-
-        //
+        }
       }
       this.peepHole();
     }, Math.round(Math.random() * (2000 - 1000) + 1000)); 
-    //TODO: should I clear holes space before doing next level?
   }
 
   addPoints(amt){

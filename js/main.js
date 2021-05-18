@@ -1,7 +1,7 @@
 const game = new Game
 const scoreBoard = document.getElementById('gameScore')
-const hpBoard = document.getElementById('currHP')
-const maxHPBoard = document.getElementById('maxHP')
+// const hpBoard = document.getElementById('currHP')
+// const maxHPBoard = document.getElementById('maxHP')
 const highScores = document.getElementById('highscores')
 const modal = document.querySelector('.modal-body')
 const players = new PlayersAdapter
@@ -62,7 +62,6 @@ function bonk(holeNum) {
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
         game.gameLevel.addPoints(1) //update based off baddie in hole
-        console.log(game.gameLevel.points)
       } else {
         game.updateCurrHP(-1)
       }
