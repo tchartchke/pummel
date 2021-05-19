@@ -60,7 +60,7 @@ class Game {
       return this.gameLevel.play()
     }).catch(() =>  {
       //max level. you've won the game!
-      return this.endGame()
+      return this.endGame("Congrats! You win!")
     })
     
   }
@@ -73,20 +73,19 @@ class Game {
 
   start(){
     this.fetchLevel()
-    // this.gameLevel.play();
-    
   }
 
-  endGame(msg="win"){
+  endGame(msg="Game Over"){
     console.log("the game has ended!")
-    console.log(msg)
+    const endMsg = document.querySelector('.end-msg')
+    endMsg.innerHTML = msg
     const modal = document.getElementById('gameEndModal');
     const span = document.getElementsByClassName('close')[0];
     modal.style.display = "block";
     span.onclick = function() {
       modal.style.display = "none";
     }
-
+    return msg
   }
 
 }
