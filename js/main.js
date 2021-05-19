@@ -7,10 +7,9 @@ const input = document.querySelector('.player-name-input')
 const save = document.getElementById('save-player')
 const note = document.getElementById('notes')
 
-// const user = new User
 const game = new Game
 
-// game.start() 
+game.start() 
 
 save.addEventListener('submit', (e) => {
   e.preventDefault();
