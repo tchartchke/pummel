@@ -28,7 +28,6 @@ note.addEventListener('submit', (e) => {
   const message = document.getElementById('cmt-msg')
   cmt.value = ""
   message.innerHTML = "Submitted! Thanks! Please Submit Another."
-
 })
 
 document.getElementById('play-again').addEventListener('click', () => {
@@ -42,9 +41,7 @@ document.addEventListener('keydown', (e) => {
     const selectedHole = document.querySelector(`.${holeNum}`)
     selectedHole.classList.add('hit')
     bonk(holeNum)
-  } else {
-    //pause logic?
-  }
+  } 
 });
 
 document.addEventListener('keyup', (e) => {
@@ -57,7 +54,6 @@ document.addEventListener('keyup', (e) => {
 });
 
 function bonk(holeNum) {
-    // TODO: will only affect anything if level is still in progress
     if (game.gameLevel.active){
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
