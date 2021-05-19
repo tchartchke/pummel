@@ -62,7 +62,7 @@ class Level{
         if (this.game.score >= this.passingScore){
           return this.game.nextLevel()
         } else if ( this.game.currHP === 0 ){
-          return this.game.endGame("lose") //TODO: say nice try and prompt saving
+          return this.game.endGame()
 
         }
       }
