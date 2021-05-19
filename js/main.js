@@ -1,22 +1,23 @@
-const game = new Game
-const scoreBoard = document.getElementById('gameScore')
-// const hpBoard = document.getElementById('currHP')
-// const maxHPBoard = document.getElementById('maxHP')
+const players = new PlayersAdapter
+
 const highScores = document.getElementById('highscores')
 const modal = document.querySelector('.modal-body')
-const players = new PlayersAdapter
 const input = document.querySelector('.player-name-input')
 
-fetchHighScores()
-game.start()
+// fetchHighScores()
+
+// const user = new User
+const game = new Game
+
+game.start() 
+
 document.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
-  //get score and date and player name input and post to api
-  //THEN reprint fetchHighScores()
   
   const playerName = input.value
   console.log(playerName)
-  players.saveGame(playerName, game.score, game.date) //todo: rerender high score list
+  players.saveGame(playerName, game.score, game.date)
+  fetchHighScores()
 
   modal.innerHTML = ""
   const playAgain = document.createElement('button')
@@ -28,13 +29,6 @@ document.querySelector('form').addEventListener('submit', (e) => {
   })
 })
 
-//event listener, load all dom
-
-// game.fetchLevel()
-//monitor game features
-
-// const holes = document.querySelectorAll('.hole');
-// let timeUp = false;
 document.addEventListener('keydown', (e) => {
   const num = e.key
   if (parseInt(num)){
@@ -61,7 +55,7 @@ function bonk(holeNum) {
     if (game.gameLevel.active){
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
-        game.gameLevel.addPoints(1) //update based off baddie in hole
+        game.gameLevel.addPoints(1) // TODO: update based off baddie in hole
       } else {
         game.updateCurrHP(-1)
       }
@@ -69,7 +63,7 @@ function bonk(holeNum) {
 }
 
 function fetchHighScores(){
-  players.getPlayers().then(players => {
+  players.getTopScores().then(players => {
     for (const player of players){
       const li = document.createElement('li')
       li.innerHTML = `${player["name"]} - ${player["score"]} - ${player["play_date"]}`
