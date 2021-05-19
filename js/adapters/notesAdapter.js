@@ -16,6 +16,6 @@ class NotesAdapter {
       },
       body: JSON.stringify(newComment)
     };
-    fetch(this.base, configObj); 
+    return fetch(this.base, configObj); 
   }
 }

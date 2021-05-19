@@ -14,10 +14,9 @@ game.start()
 save.addEventListener('submit', (e) => {
   e.preventDefault();
   const playerName = input.value
-  players.saveGame(playerName, game.score, game.date)
+  players.saveGame(playerName, game.score, game.date).then(() => fetchHighScores())
 
   save.innerHTML = "Saved! Thanks for Playing"
-  //TODO: make button visible to fetch high scores fetchHighScores()
 })
 
 note.addEventListener('submit', (e) => {
@@ -26,9 +25,9 @@ note.addEventListener('submit', (e) => {
   const lvl = document.querySelector('#notes select').value
   notes.submitNote(cmt, lvl);
 
-  const btn = document.getElementById('feedbackbtn')
+  const message = document.getElementById('cmt-msg')
   cmt.value = ""
-  btn.value = "Submitted! Please Submit Another"
+  message.innerHTML = "Submitted! Thanks! Please Submit Another."
 
 })
 
