@@ -16,14 +16,33 @@
           <h2 class="end-msg"></h2>
         </div>
         <div class="modal-body">
-          <form id="save-player">
-            <input class="player-name-input" type="text" />
-            <input type="submit" />
-          </form>
+          <div class="left">
+            <form id="save-player">
+              <p>Save Your Game</p>
+              <label for="player-name-input">Name:</label>
+              <input id="player-name-input" class="player-name-input" type="text" />
+              <input type="submit" />
+            </form>
+            <button id="play-again">
+              Play Again
+            </button>
+          </div>
+          <div class="right">
+            help with notes on each level
+            <form class="notes">
+              <label for="level">Level:</label>
+              <select name="level" id="level">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <input class="player-name-input" type="text" />
+              <input type="submit" value="Send Notes"/>
+            </form>
+          </div>
         </div>
         <div class="modal-footer">
-          <ul id="highscores">
-          </ul>
         </div>
       </div>
     

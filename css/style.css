@@ -130,7 +130,7 @@
 /* END OF GAME MODAL */
 /* The Modal (background) */
 .modal {
-  display: none;  
+  /* display: none;   */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -175,7 +175,13 @@
 }
 
 /* Modal Body */
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 2px 16px;
+}
 
 /* Modal Footer */
 .modal-footer {
