@@ -1,32 +1,28 @@
 const players = new PlayersAdapter
 
-const highScores = document.getElementById('highscores')
+const highScores = document.querySelector('.modal-footer')
 const modal = document.querySelector('.modal-body')
 const input = document.querySelector('.player-name-input')
-
-// fetchHighScores()
+const save = document.getElementById('save-player')
 
 // const user = new User
 const game = new Game
 
-game.start() 
+// game.start() 
 
-document.querySelector('form').addEventListener('submit', (e) => {
+save.addEventListener('submit', (e) => {
   e.preventDefault();
-  
   const playerName = input.value
-  console.log(playerName)
   players.saveGame(playerName, game.score, game.date)
-  fetchHighScores()
 
-  modal.innerHTML = ""
-  const playAgain = document.createElement('button')
-  playAgain.className = "play-again"
-  playAgain.innerHTML = "Play Again?"
-  modal.appendChild(playAgain)
-  playAgain.addEventListener('click', () => {
-    location.reload();
-  })
+  save.innerHTML = "Saved! Thanks for Playing"
+  //TODO: make button visible to fetch high scores fetchHighScores()
+
+  
+})
+
+document.getElementById('play-again').addEventListener('click', () => {
+  location.reload();
 })
 
 document.addEventListener('keydown', (e) => {
@@ -63,11 +59,17 @@ function bonk(holeNum) {
 }
 
 function fetchHighScores(){
+
+  const scoreTitle = document.createElement('h2')
+  scoreTitle.innerHTML = "High Scores"
+
+  const ul = document.createElement('ul')
+  highScores.appendChild(ul)
   players.getTopScores().then(players => {
     for (const player of players){
       const li = document.createElement('li')
       li.innerHTML = `${player["name"]} - ${player["score"]} - ${player["play_date"]}`
-      highScores.appendChild(li)
+      ul.appendChild(li)
     }
   })
 }
