@@ -69,10 +69,10 @@ function bonk(holeNum) {
 }
 
 function fetchHighScores(){
-
   const scoreTitle = document.createElement('h2')
   scoreTitle.innerHTML = "High Scores"
-
+  highScores.appendChild(scoreTitle)
+  
   const ul = document.createElement('ul')
   highScores.appendChild(ul)
   players.getTopScores().then(players => {

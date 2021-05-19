@@ -4,7 +4,6 @@ class PlayersAdapter {
   }
 
   getTopScores(){
-    //TODO: fetch top 10 scores, not all players, sorted DESC by score
     return fetch(`${this.base}/top10`).then(res => res.json())
   }
 
