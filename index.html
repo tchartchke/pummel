@@ -28,17 +28,17 @@
             </button>
           </div>
           <div class="right">
-            help with notes on each level
-            <form class="notes">
-              <label for="level">Level:</label>
-              <select name="level" id="level">
+            <p>Please leave feedback for levels!</p>
+            <form id="notes">
+              <label for="level_id">Level:</label>
+              <select name="level_id" id="level_id">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
-              <input class="player-name-input" type="text" />
-              <input type="submit" value="Send Notes"/>
+              <input class="comment" type="text" />
+              <input type="submit" id="feedbackbtn" value="Submit feedback"/>
             </form>
           </div>
         </div>
@@ -85,6 +85,7 @@
   </script>
   <script src="js\adapters\levelsAdapter.js" charset="utf-8"></script>
   <script src="js\adapters\playersAdapter.js" charset="utf-8"></script>
+  <script src="js\adapters\notesAdapter.js" charset="utf-8"></script>
   <script src="js\classes\user.js" charset="utf-8"></script>
   <script src="js\classes\game.js" charset="utf-8"></script>
   <script src="js\classes\level.js" charset="utf-8"></script>

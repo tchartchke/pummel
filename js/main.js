@@ -1,9 +1,11 @@
 const players = new PlayersAdapter
+const notes = new NotesAdapter
 
 const highScores = document.querySelector('.modal-footer')
 const modal = document.querySelector('.modal-body')
 const input = document.querySelector('.player-name-input')
 const save = document.getElementById('save-player')
+const note = document.getElementById('notes')
 
 // const user = new User
 const game = new Game
@@ -17,8 +19,18 @@ save.addEventListener('submit', (e) => {
 
   save.innerHTML = "Saved! Thanks for Playing"
   //TODO: make button visible to fetch high scores fetchHighScores()
+})
 
-  
+note.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const cmt = document.querySelector('#notes .comment').value
+  const lvl = document.querySelector('#notes select').value
+  notes.submitNote(cmt, lvl);
+
+  const btn = document.getElementById('feedbackbtn')
+  cmt.value = ""
+  btn.value = "Submitted! Please Submit Another"
+
 })
 
 document.getElementById('play-again').addEventListener('click', () => {
