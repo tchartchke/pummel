@@ -12,7 +12,6 @@ class Game {
     this.hpbar = document.querySelector('.health')
   }
 
-  // Getters
   get score(){ return this._score }
   get LvlScore(){ return this._LvlScore }
   get date(){ return this._date }
@@ -26,7 +25,6 @@ class Game {
   set score(score){ return this._score = score }
   set currHP(currHP){ return this._currHP = currHP }
 
-  // Functions
   updateScore(amount){
     const newScore = this.score + amount
     if (newScore >= this.gameLevel.passingScore){
@@ -59,8 +57,7 @@ class Game {
       this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["concurrency"], this)
       return this.gameLevel.play()
     }).catch(() =>  {
-      //max level. you've won the game!
-      return this.endGame("Congrats! You win!")
+      return this.endGame("Congrats! You've reached the end!")
     })
     
   }
@@ -68,7 +65,6 @@ class Game {
   nextLevel(){
     this._levelNum += 1
     this.fetchLevel()
-    // this.gameLevel.play();
   }
 
   start(){
