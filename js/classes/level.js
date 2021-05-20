@@ -1,9 +1,10 @@
 class Level{
-  constructor(lvl, passingScore, speedMin, speedMax, game){
+  constructor(lvl, passingScore, speedMin, speedMax, wait, game){
     this._lvl = lvl
     this._passingScore = passingScore
     this._speedMin = speedMin
     this._speedMax = speedMax
+    this._wait = wait
     this._game = game
     this.active = true
     this.playlvl;
@@ -29,6 +30,7 @@ class Level{
   };
 
   get level(){ return this._lvl }
+  get wait(){ return this._wait }
   get points(){ return this._points }
   get passingScore(){ return this._passingScore }
   get speedMin(){ return this._speedMin }
@@ -62,7 +64,7 @@ class Level{
           }
         }
         this.peepHole();
-      }, Math.round(Math.random() * (2000 - 500) + 500)); 
+      }, Math.round(Math.random() * (this.wait*1.5 - this.wait) + this.wait)); 
   }
 
   addPoints(amt){

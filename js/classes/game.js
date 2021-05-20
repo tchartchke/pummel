@@ -54,7 +54,7 @@ class Game {
 
   fetchLevel(){
     this.adapter.getLevel(this.levelNum).then(level => {
-      this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], this)
+      this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["wait"], this)
       return this.gameLevel.play()
     }).catch(() =>  {
       return this.endGame("Congrats! You've reached the end!")
