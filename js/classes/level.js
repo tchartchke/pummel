@@ -62,7 +62,7 @@ class Level{
           }
         }
         this.peepHole();
-      }, Math.round(Math.random() * (2000 - 1000) + 1000)); 
+      }, Math.round(Math.random() * (2000 - 500) + 500)); 
   }
 
   addPoints(amt){
