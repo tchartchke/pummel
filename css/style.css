@@ -31,7 +31,7 @@
 
 }
 .main {
-  width: 50rem;
+  /* width: 50rem; */
   height: min-content;
   background-color: #ccc;
   border-radius: 1em;
