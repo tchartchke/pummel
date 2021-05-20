@@ -1,10 +1,9 @@
 class Level{
-  constructor(lvl, passingScore, speedMin, speedMax, concurrency, game){
+  constructor(lvl, passingScore, speedMin, speedMax, game){
     this._lvl = lvl
     this._passingScore = passingScore
     this._speedMin = speedMin
     this._speedMax = speedMax
-    this._concurrency = concurrency
     this._game = game
     this.active = true
     this.playlvl;
@@ -34,7 +33,6 @@ class Level{
   get passingScore(){ return this._passingScore }
   get speedMin(){ return this._speedMin }
   get speedMax(){ return this._speedMax }
-  get concurrency(){ return this._concurrency }
   get game(){ return this._game }
   get holes(){ return this._holes }
   get running(){ return this._running }
@@ -42,8 +40,6 @@ class Level{
   set points(amt){
     return this._points = amt
   }
-
-  //Functions
 
   levelProgress(){
     return Number.parseFloat( this.points / this.passingScore * 100).toFixed(2)
@@ -54,20 +50,19 @@ class Level{
   }
 
   play(){
-    this.playLvl = setInterval(() => {
-      if (this.isLevelOver()){
-        this.active = false
-        this.resetHoles
-        clearInterval(this.playLvl)
-        if (this.game.score >= this.passingScore){
-          return this.game.nextLevel()
-        } else if ( this.game.currHP === 0 ){
-          return this.game.endGame()
-
+      this.playLvl = setInterval(() => {
+        if (this.isLevelOver()){
+          this.active = false
+          this.resetHoles
+          clearInterval(this.playLvl)
+          if (this.game.score >= this.passingScore){
+            return this.game.nextLevel()
+          } else if ( this.game.currHP === 0 ){
+            return this.game.endGame()
+          }
         }
-      }
-      this.peepHole();
-    }, Math.round(Math.random() * (2000 - 1000) + 1000)); 
+        this.peepHole();
+      }, Math.round(Math.random() * (2000 - 1000) + 1000)); 
   }
 
   addPoints(amt){
