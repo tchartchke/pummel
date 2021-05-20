@@ -75,8 +75,19 @@
   transition:all 0.07s;
 }
 
-.hole.up {
-  background-color: palevioletred;
+.hole.up .baddie {
+  top: auto;
+}
+
+.baddie {
+  background: url('../monsters/monster1.svg') bottom center no-repeat;
+  background-size: contain;
+  position: absolute;
+  height: 15vh;
+  min-width: 15vh;
+  top: 100%;
+
+  transition:all 0.07s;
 }
 
 .hit {
