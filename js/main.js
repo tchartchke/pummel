@@ -21,12 +21,13 @@ save.addEventListener('submit', (e) => {
 
 note.addEventListener('submit', (e) => {
   e.preventDefault();
-  const cmt = document.querySelector('#notes .comment').value
-  const lvl = document.querySelector('#notes select').value
-  notes.submitNote(cmt, lvl);
+  const cmt = document.querySelector('#notes .comment')
+  const lvl = document.querySelector('#notes select')
+  notes.submitNote(cmt.value, lvl.value);
 
   const message = document.getElementById('cmt-msg')
   cmt.value = ""
+  lvl.value = 1
   message.innerHTML = "Submitted! Thanks! Please Submit Another."
 })
 
