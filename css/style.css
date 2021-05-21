@@ -1,3 +1,17 @@
+.bg { 
+  background: linear-gradient(135deg, #EFBDC8 25%, transparent 25%) -50px 0, 
+    linear-gradient(225deg, #EFBDC8 25%, transparent 25%) -50px 0, 
+    linear-gradient(315deg, #EFBDC8 25%, transparent 25%), 
+    linear-gradient(45deg, #EFBDC8 25%, transparent 25%);
+  background-size: 100px 100px; 
+  background-position-y: center;
+  top: 50%;
+  margin-top: -100px;
+  position: fixed;
+  z-index: -2;
+  width: 100%;
+  height: 200px;
+}
 .wrapper {
   color: #3E363F;
   position: absolute;
