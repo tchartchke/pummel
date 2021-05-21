@@ -3,7 +3,7 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* padding-top: 5rem; */
+  padding-top: 1rem;
 
   margin: auto;
   right: 0;
@@ -20,13 +20,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  justify-content: space-evenly;
 }
 
-/* .m1, .m2, .m3, .m4 {
-  background-size: 5em;
-  height: 15vh;
-  min-width: 15vh;
+.title > div {
+  background-size: contain;
+  height: 10vh;
+  min-width: 10vh;
 }
+
 .m1 {
   background: url('../monsters/monster1.svg') center;
 }
@@ -38,18 +41,16 @@
 }
 .m4 {
   background: url('../monsters/monster4.svg') center;
-} */
-
-img {
-  /* max-width: 100%; */
-  max-width: 1em;
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  /* width: 50%; */
-
-
+} 
+.item {
+  
+}
+.mallet {
+  background: url('../mallet1.svg') center no-repeat;
+  background-size: 70%;
+  width: 100%;
+  padding-top: 100%; 
+  height: 0;
 }
 
 .footer {
@@ -127,7 +128,7 @@ img {
 
 .hit {
   border-radius: 0.5em;
-  background-color: #F7DEE3;
+  background-color: #FDE74C;
 }
 
 .sidebar {
@@ -173,7 +174,6 @@ img {
   width: 0%;
 }
 
-
 /* END OF GAME MODAL */
 .modal {
   display: none;  
@@ -187,8 +187,6 @@ img {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  /* border-top-left-radius: 1em;
-  border-top-right-radius: 1em; */
 }
 
 /* Modal Content */
@@ -210,14 +208,17 @@ img {
   color: #3E363F;
   float: right;
   font-size: 28px;
-  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #E8EDED;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+
+.close:active {
+  color: #FDE74C;
 }
 
 /* Modal Header */
@@ -295,7 +296,7 @@ button, #savebtn, #feedbackbtn {
   font-family: 'Bungee Outline', cursive;
   display: block;
   font-size: 1.5rem;
-  background-color: #F7DDA1;
+  background-color: #FDE74C;
   border: none;
   margin: 2px 0px;
   border-radius: 2px;
@@ -303,7 +304,7 @@ button, #savebtn, #feedbackbtn {
 
 button:hover, #savebtn:hover, #feedbackbtn:hover {
   background-color: #DA627D;
-  color: #E8EDED;
+  color: #fff;
 }
 
 button:active, #savebtn:active, #feedbackbtn:active {
@@ -326,8 +327,8 @@ a, a:visited {
   margin: 0px 2px;
 }
 
-a:hover {
-  color: #DA627D;
+a:hover, a:focus {
+  color: #FFA630;
   font-family: 'Bungee Outline', cursive;
 }
 
