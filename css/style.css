@@ -32,7 +32,7 @@
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'KoHo', sans-serif;
 
 }
 .main {
@@ -248,8 +248,8 @@ h2 {
   padding: 1em;
 }
 
-input {
-  font-family: 'Roboto', sans-serif;
+input, select{
+  font-family: 'KoHo', sans-serif;
   margin-top: 1px;
 }
 
