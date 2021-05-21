@@ -56,9 +56,7 @@
 .m4 {
   background: url('../monsters/monster4.svg') center;
 } 
-.item {
-  
-}
+
 .mallet {
   background: url('../mallet1.svg') center no-repeat;
   background-size: 70%;
@@ -150,6 +148,11 @@
   padding: 1em;
   background-color: #E8EDED;
   border-radius: 1em;
+}
+
+.hightlight{
+  background-color: #FDE74C;
+  transition: all 0.2s;
 }
 
 /* Health and score meters */

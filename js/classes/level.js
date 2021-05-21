@@ -16,6 +16,8 @@ class Level{
     this.levelProgressBar = document.querySelector('.levelprogress')
     this.levelProgressBar.style.width = `0%`
 
+    this.blink(this.levelIndicator)
+
     this._holes = {
       hole1 : new Hole("1", this),
       hole2 : new Hole("2", this),
@@ -65,6 +67,13 @@ class Level{
         }
         this.peepHole();
       }, Math.round(Math.random() * (this.wait*1.5 - this.wait) + this.wait)); 
+  }
+
+  blink(node){
+    node.classList.add('hightlight')
+    setTimeout(() => {
+      node.classList.remove('hightlight')
+    }, 500);
   }
 
   addPoints(amt){
