@@ -45,20 +45,20 @@
 }
 
 .m1 {
-  background: url('../monsters/monster1.svg') center;
+  background: url('../icons/monster1.svg') center;
 }
 .m2 {
-  background: url('../monsters/monster2.svg') center;
+  background: url('../icons/monster2.svg') center;
 }
 .m3 {
-  background: url('../monsters/monster3.svg') center;
+  background: url('../icons/monster3.svg') center;
 }
 .m4 {
-  background: url('../monsters/monster4.svg') center;
+  background: url('../icons/monster4.svg') center;
 } 
 
 .mallet {
-  background: url('../mallet1.svg') center no-repeat;
+  background: url('../icons/mallet1.svg') center no-repeat;
   background-size: 70%;
   width: 100%;
   padding-top: 100%; 
@@ -128,7 +128,7 @@
 }
 
 .baddie {
-  background: url('../monsters/monster1.svg') bottom center no-repeat;
+  background: url('../icons/monster1.svg') bottom center no-repeat;
   background-size: contain;
   position: absolute;
   height: 15vh;
@@ -261,7 +261,7 @@
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: #FFA630;
   color: #fff;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -275,25 +275,53 @@ h2 {
 }
 
 .left {
+  align-self: baseline;
   width: 50%;
   padding: 1em;
+  border-right: 1px solid #E8EDED;
 }
 
 .right {
+  align-self: baseline;
   width: 50%;
   padding: 1em;
 }
 
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+form > p {
+  width: 100%;
+  font-weight: bolder;
+}
+
 input, select{
+  margin-left: 3px;
   font-family: 'KoHo', sans-serif;
   margin-top: 1px;
+  width: max-content;
+}
+
+select {
+  width: max-content;
+}
+
+input {
+  width: fit-content;
+  flex-grow: 2;
+}
+
+label {
+  align-self: center;
 }
 
 .scores {
   display: flex;
   flex-flow: column nowrap;
   padding-bottom: 1em;
-
 }
 .scores > div{
   font-family: 'Bungee Inline', cursive;
@@ -315,8 +343,11 @@ button, #savebtn, #feedbackbtn {
   font-size: 1.5rem;
   background-color: #FDE74C;
   border: none;
-  margin: 2px 0px;
+  margin: 5px 0px;
   border-radius: 2px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button:hover, #savebtn:hover, #feedbackbtn:hover {

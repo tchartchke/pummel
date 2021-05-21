@@ -10,7 +10,6 @@ const note = document.getElementById('notes')
 const game = new Game
 
 game.start() 
-// fetchHighScores()
 
 save.addEventListener('submit', (e) => {
   e.preventDefault();
