@@ -15,7 +15,7 @@ startbtn.addEventListener('click', () => {
   document.getElementById('startbutton').style.display = "none"
   setTimeout(() => {
     game.start()
-  }, 3000);
+  }, 2000);
   
 })
 
@@ -36,7 +36,7 @@ note.addEventListener('submit', (e) => {
   const message = document.getElementById('cmt-msg')
   cmt.value = ""
   lvl.value = 1
-  message.innerHTML = "Sent! Thanks!"
+  message.innerHTML = "Sent! Thank you for the feedback!"
 })
 
 document.getElementById('play-again').addEventListener('click', () => {
@@ -66,7 +66,7 @@ function bonk(holeNum) {
     if (game.gameLevel.active){
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
-        game.gameLevel.addPoints(1) // TODO: update based off baddie lvl
+        game.gameLevel.addPoints(1)
       } else {
         game.updateCurrHP(-1)
       }
