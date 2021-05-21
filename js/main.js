@@ -28,7 +28,7 @@ note.addEventListener('submit', (e) => {
   const message = document.getElementById('cmt-msg')
   cmt.value = ""
   lvl.value = 1
-  message.innerHTML = "Submitted! Thanks! Please Submit Another."
+  message.innerHTML = "Sent! Thanks!"
 })
 
 document.getElementById('play-again').addEventListener('click', () => {
@@ -58,7 +58,7 @@ function bonk(holeNum) {
     if (game.gameLevel.active){
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
-        game.gameLevel.addPoints(1) // TODO: update based off baddie in hole
+        game.gameLevel.addPoints(1) // TODO: update based off baddie lvl
       } else {
         game.updateCurrHP(-1)
       }
