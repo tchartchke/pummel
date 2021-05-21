@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Pummel</title>
-    <!-- <link rel="stylesheet" href="css\reset.css"> -->
+    <link rel="stylesheet" href="css\reset.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Bungee+Inline&family=Bungee+Outline&family=Roboto&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css\style.css">
   </head>
   <body>
@@ -21,14 +24,14 @@
               <p>Save Your Game</p>
               <label for="player-name-input">Name:</label>
               <input id="player-name-input" class="player-name-input" type="text" />
-              <input type="submit" />
+              <input id="savebtn" type="submit" />
             </form>
             <button id="play-again">
               Play Again
             </button>
           </div>
           <div class="right">
-            <p id="cmt-msg">Please leave feedback for levels!</p>
+            <p id="cmt-msg">Leave feedback</p>
             <form id="notes">
               <label for="level_id">Level:</label>
               <select name="level_id" id="level_id">
@@ -53,7 +56,7 @@
       <div class="main">
         <div class="gamewrapper">
           <div class="sidebar">
-            HP
+            Health
             <div class="meter orange">
               <span class="health"></span>
             </div>
@@ -62,7 +65,7 @@
               <span class="levelprogress"></span>
             </div>
 
-            <div>fun shit like your items??</div>
+            <div>Items??</div>
           </div>
           <div class="gamearea">
             <div class="hole hole7">
@@ -95,8 +98,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">Welcome to Pummel! Use your NumPad to pummel some monsters!</div>
-      <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <div class="footer">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </div>
   </body>
   <script>

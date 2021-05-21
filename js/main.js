@@ -10,6 +10,7 @@ const note = document.getElementById('notes')
 const game = new Game
 
 game.start() 
+// fetchHighScores()
 
 save.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -69,14 +70,19 @@ function fetchHighScores(){
   const scoreTitle = document.createElement('h2')
   scoreTitle.innerHTML = "High Scores"
   highScores.appendChild(scoreTitle)
+  highScores.style.display = "block"
   
-  const ul = document.createElement('ul')
-  highScores.appendChild(ul)
+  const scores = document.createElement('div')
+  scores.className = "scores"
+  highScores.appendChild(scores)
+  
+  highScores.appendChild(scores)
   players.getTopScores().then(players => {
     for (const player of players){
-      const li = document.createElement('li')
-      li.innerHTML = `${player["name"]} - ${player["score"]} - ${player["play_date"]}`
-      ul.appendChild(li)
+      const div = document.createElement('div')
+      div.innerHTML = `<div>${player["name"]}</div><span class="line"></span><div>${player["score"]}</div>`
+      scores.appendChild(div)
+
     }
   })
 }

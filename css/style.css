@@ -1,4 +1,5 @@
 .wrapper {
+  color: #3E363F;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -11,8 +12,10 @@
   width: 50rem;
 }
 .title {
+  font-family: 'Bungee Inline', cursive;
+  font-size: 4em;
   border-radius: 1em;
-  background-color: #ccc; 
+  background-color: #FFA630; 
   padding: 1rem;
   margin-bottom: 1rem;
   display: flex;
@@ -22,18 +25,21 @@
 }
 .footer {
   border-radius: 1em;
-  background-color: #ccc; 
+  
+  /* background-color: #33D743;  */
   padding: 1rem;
   margin-top: 1rem;
   display: flex;
   /* justify-content: center; */
   align-items: center;
+  font-family: 'Roboto', sans-serif;
 
 }
 .main {
-  /* width: 50rem; */
+  align-self: center;
+  width: 45rem;
   height: min-content;
-  background-color: #ccc;
+  background-color: #1E91D6;
   border-radius: 1em;
   padding: 1rem;
 }
@@ -64,7 +70,7 @@
 }
 
 .hole {
-  background: rgba(0,0,0,0.1);
+  background: #E8EDED;
   border-radius: 0.5em;
   margin: 0.2em;
 
@@ -76,7 +82,7 @@
 }
 
 .hole.up .baddie {
-  top: auto;
+  display: block;
 }
 
 .baddie {
@@ -85,7 +91,7 @@
   position: absolute;
   height: 15vh;
   min-width: 15vh;
-  top: 100%;
+  display: none;
 
   transition:all 0.07s;
 }
@@ -96,8 +102,9 @@
 }
 
 .sidebar {
+  font-family: 'Bungee Inline', cursive;
   padding: 1em;
-  background-color: palegoldenrod;
+  background-color: #E8EDED;
   border-radius: 1em;
 }
 
@@ -107,7 +114,7 @@
   height: 20px; /* Can be anything */
   position: relative;
   margin: 20px 0 20px 0; /* Just for demo spacing */
-  background: #555;
+  background: #3E363F;
   border-radius: 25px;
   padding: 10px;
   box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
@@ -116,7 +123,7 @@
   display: block;
   height: 100%;
   border-radius: 20px;
-  background-color: rgb(43, 194, 83);
+  background-color: #33D743;
 
   box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
     inset 0 -2px 6px rgba(0, 0, 0, 0.4);
@@ -126,7 +133,7 @@
 }
 
 .orange > span {
-  background-image: linear-gradient(#f1a165, #f36d0a);
+  background-color: #DA627D;
 }
 
 .health {
@@ -151,6 +158,8 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /* border-top-left-radius: 1em;
+  border-top-right-radius: 1em; */
 }
 
 /* Modal Content */
@@ -160,11 +169,12 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 1em;
 }
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  color: #3E363F;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -172,7 +182,7 @@
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #E8EDED;
   text-decoration: none;
   cursor: pointer;
 }
@@ -180,12 +190,19 @@
 /* Modal Header */
 .modal-header {
   padding: 2px 16px;
+  /* background-color: #33D743; */
+  /* background-color: #A7C035; */
   background-color: #5cb85c;
-  color: white;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  font-size: 3em;
+  font-family: 'Bungee Outline', cursive;
 }
 
 /* Modal Body */
 .modal-body {
+  font-family: 'Bungee Hairline', cursive;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -197,7 +214,15 @@
 .modal-footer {
   padding: 2px 16px;
   background-color: #5cb85c;
-  color: white;
+  color: #fff;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  display: none;
+}
+
+h2 {
+  font-family: 'Bungee Hairline', cursive;
+  font-size: 2rem;
 }
 
 /* Modal Content */
@@ -223,8 +248,61 @@
   padding: 1em;
 }
 
+input {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 1px;
+}
+
+.scores {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-bottom: 1em;
+
+}
+.scores > div{
+  font-family: 'Bungee Inline', cursive;
+  padding: 2px 1em;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+.line{
+  flex-grow: 1;
+  border-bottom: 1px dashed #fefefe;
+  margin: 0rem 1rem;
+}
+
+button, #savebtn, #feedbackbtn {
+  /* color:#DA627D;  */
+  font-family: 'Bungee Outline', cursive;
+  display: block;
+  font-size: 1.5rem;
+  background-color: #F7DDA1;
+  border: none;
+  margin: 2px 0px;
+  border-radius: 2px;
+}
+
 /* Add Animation */
 @keyframes animatetop {
   from {top: -300px; opacity: 0}
   to {top: 0; opacity: 1}
 }
+
+a, a:visited, a:active {
+  color: #1E91D6;
+  font-family: 'Bungee Outline', cursive;
+  text-decoration: none;
+  margin: 0px 2px;
+  
+}
+
+a:hover {
+  color: #DA627D;
+  
+}
+
+/* a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active - */
