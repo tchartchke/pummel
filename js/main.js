@@ -6,10 +6,18 @@ const modal = document.querySelector('.modal-body')
 const input = document.querySelector('.player-name-input')
 const save = document.getElementById('save-player')
 const note = document.getElementById('notes')
+const startbtn = document.querySelector('.pushable')
 
 const game = new Game
 
-game.start() 
+startbtn.addEventListener('click', () => {
+  
+  document.getElementById('startbutton').style.display = "none"
+  setTimeout(() => {
+    game.start()
+  }, 3000);
+  
+})
 
 save.addEventListener('submit', (e) => {
   e.preventDefault();
