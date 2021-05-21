@@ -4,6 +4,7 @@ class Hole{
     this._up = false
     this._level = levelObject
     this.hole = document.querySelector(`.hole${num}`)
+    this.baddie = document.querySelector(`.hole${num} .baddie`)
   }
 
   get name(){ return this._name }
@@ -12,6 +13,7 @@ class Hole{
 
   lift(){
     this.hole.classList.add('up')
+    this.baddie.style.background = `no-repeat center/contain url("icons/monster${this.randomBaddie()}.svg")`
     return this._up = true
   }
   drop(){
@@ -21,6 +23,12 @@ class Hole{
 
   randomTime(){
     return Math.round(Math.random() * (this.level.speedMax - this.level.speedMin) + this.level.speedMin);
+  }
+
+  randomBaddie(){
+    const min = Math.ceil(1);
+    const max = Math.floor(4);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   peep(){

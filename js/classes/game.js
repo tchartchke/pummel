@@ -57,7 +57,7 @@ class Game {
       this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["wait"], this)
       return this.gameLevel.play()
     }).catch(() =>  {
-      return this.endGame("Congrats! You've reached the end!")
+      return this.endGame("You Win")
     })
      
   }
@@ -72,9 +72,8 @@ class Game {
   }
 
   endGame(msg="Game Over"){
-    console.log("the game has ended!")
     const endMsg = document.querySelector('.end-msg')
-    endMsg.innerHTML = msg
+    endMsg.innerHTML = `${msg} at lvl ${this.levelNum} (${this.score} points)`
     const modal = document.getElementById('gameEndModal');
     const span = document.getElementsByClassName('close')[0];
     modal.style.display = "block";

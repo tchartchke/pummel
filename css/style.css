@@ -128,8 +128,6 @@
 }
 
 .baddie {
-  background: url('../icons/monster1.svg') bottom center no-repeat;
-  background-size: contain;
   position: absolute;
   height: 15vh;
   min-width: 15vh;
