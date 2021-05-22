@@ -11,19 +11,16 @@ const startbtn = document.querySelector('.pushable')
 const game = new Game
 
 startbtn.addEventListener('click', () => {
-  
   document.getElementById('startbutton').style.display = "none"
   setTimeout(() => {
     game.start()
   }, 2000);
-  
 })
 
 save.addEventListener('submit', (e) => {
   e.preventDefault();
   const playerName = input.value
   players.saveGame(playerName, game.score, game.date).then(() => fetchHighScores())
-
   save.innerHTML = "Saved! Thanks for Playing"
 })
 
@@ -63,10 +60,10 @@ document.addEventListener('keyup', (e) => {
 });
 
 function bonk(holeNum) {
-    if (game.gameLevel.active){
+    if (game.gameLevel && game.gameLevel.active){
       if (game.gameLevel.holes[holeNum].up){
         game.gameLevel.holes[holeNum].drop()
-        game.gameLevel.addPoints(1)
+        game.gameLevel.addPoints(1) // TODO: update based off baddie lvl
       } else {
         game.updateCurrHP(-1)
       }

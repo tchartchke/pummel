@@ -59,10 +59,10 @@ class Level{
           this.active = false
           this.resetHoles
           clearInterval(this.playLvl)
-          if (this.game.score >= this.passingScore){
+          if ( this.game.currHP === 0 ){
+            return this.game.endGame(false)
+          } else if ( this.game.score >= this.passingScore ){
             return this.game.nextLevel()
-          } else if ( this.game.currHP === 0 ){
-            return this.game.endGame()
           }
         }
         this.peepHole();

@@ -1,10 +1,9 @@
 class Game {
   constructor() {
     this._score = 0
-    this._LvlScore = 0
     this._date = new Date().toLocaleDateString('fr-CA')
-    this._maxHP = 10
-    this._currHP = 10
+    this._maxHP = 20
+    this._currHP = 20
     this._levelNum = 1
     this._gameOver = false
     this.adapter = new LevelsAdapter()
@@ -13,7 +12,6 @@ class Game {
   }
 
   get score(){ return this._score }
-  get LvlScore(){ return this._LvlScore }
   get date(){ return this._date }
   get levelNum(){ return this._levelNum }
   get maxHP(){ return this._maxHP }
@@ -25,14 +23,9 @@ class Game {
   set score(score){ return this._score = score }
   set currHP(currHP){ return this._currHP = currHP }
 
+  //score for whole game
   updateScore(amount){
-    const newScore = this.score + amount
-    if (newScore >= this.gameLevel.passingScore){
-      this.score = this.gameLevel.passingScore
-    } else {
-      this.score = newScore
-    }
-    return this.score
+    return this.score += amount
   }
 
   healthPercentage(){
@@ -57,7 +50,7 @@ class Game {
       this._gameLevel = new Level(level["level"], level["passingScore"], level["speedMin"], level["speedMax"], level["wait"], this)
       return this.gameLevel.play()
     }).catch(() =>  {
-      return this.endGame("You Win")
+      return this.endGame(true)
     })
      
   }
@@ -71,16 +64,17 @@ class Game {
     this.fetchLevel()
   }
 
-  endGame(msg="Game Over"){
+  endGame(win = false){
     const endMsg = document.querySelector('.end-msg')
-    endMsg.innerHTML = `${msg} at lvl ${this.levelNum} (${this.score} points)`
+    let msg = `Game Over! Lvl ${this.levelNum} (${this.score} points)`
+    if (win) { msg = "You're the most Pummeler!" }
+    endMsg.innerHTML = msg
     const modal = document.getElementById('gameEndModal');
     const span = document.getElementsByClassName('close')[0];
     modal.style.display = "block";
     span.onclick = function() {
       modal.style.display = "none";
     }
-    return msg
   }
 
 }
