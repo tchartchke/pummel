@@ -23,7 +23,6 @@ class Game {
   set score(score){ return this._score = score }
   set currHP(currHP){ return this._currHP = currHP }
 
-  //score for whole game
   updateScore(amount){
     return this.score += amount
   }
@@ -76,5 +75,4 @@ class Game {
       modal.style.display = "none";
     }
   }
-
 }
