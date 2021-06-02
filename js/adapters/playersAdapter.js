@@ -1,6 +1,6 @@
 class PlayersAdapter {
   constructor(){
-    this.base = 'http://127.0.0.1:3000/api/players'
+    this.base = 'https://pummelapi.herokuapp.com/api/players'
   }
 
   getTopScores(){

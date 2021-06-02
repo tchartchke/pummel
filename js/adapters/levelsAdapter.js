@@ -1,6 +1,6 @@
 class LevelsAdapter {
   constructor(){
-    this.base = 'http://127.0.0.1:3000/api/levels/'
+    this.base = 'https://pummelapi.herokuapp.com/api/levels/'
   }
 
   getLevels(){

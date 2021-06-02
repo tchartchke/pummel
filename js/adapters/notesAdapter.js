@@ -1,6 +1,6 @@
 class NotesAdapter {
   constructor(){
-    this.base = 'http://127.0.0.1:3000/api/notes'
+    this.base = 'https://pummelapi.herokuapp.com/api/notes'
   }
 
   submitNote(comment, level){
